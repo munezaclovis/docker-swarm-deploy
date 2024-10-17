@@ -35,4 +35,5 @@ if [ ${INPUT_REMOTE_HOST#"ssh://"} != "$INPUT_REMOTE_HOST" ]; then
 fi
 
 echo "Connecting to $INPUT_REMOTE_HOST..."
+echo $(docker --version)
 docker --log-level debug --host "$INPUT_REMOTE_HOST" "$@" 2>&1

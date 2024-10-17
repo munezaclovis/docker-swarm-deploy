@@ -8,7 +8,7 @@ Below is a brief example on how the action can be used:
 
 ```yaml
 - name: Deploy to swarm
-  uses: munezaclovis/ssh-docker@v1
+  uses: munezaclovis/ssh-docker@v2
   with:
     remote_host: ssh://user@ip
     ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
