@@ -29,12 +29,10 @@ if [ ${INPUT_REMOTE_HOST#"ssh://"} != "$INPUT_REMOTE_HOST" ]; then
     chmod 600 "$HOME/.ssh/docker"
     eval $(ssh-agent)
     ssh-add "$HOME/.ssh/docker"
-    ssh-keyscan $SSH_HOST >> $HOME/.ssh/known_hosts
 
     # Add public key to known hosts.
     printf '%s %s\n' "$SSH_HOST" "$INPUT_SSH_PUBLIC_KEY" >> /etc/ssh/ssh_known_hosts
 fi
 
 echo "Connecting to $INPUT_REMOTE_HOST..."
-echo $(docker --host "$INPUT_REMOTE_HOST" --version)
 docker --log-level debug --host "$INPUT_REMOTE_HOST" "$@" 2>&1
